@@ -47,4 +47,8 @@ def comprar_bilhete(request):
 
 
 def usar_bilhete(request):
-    pass
+    return render(request, 'aplicativo/usar_bilhete.html')
+
+def clientes(request):
+    banco = Banco.objects.all().order_by('nome')
+    return render(request, 'aplicativo/clientes.html', {'banco':banco})
