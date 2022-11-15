@@ -1,0 +1,99 @@
+{% load static %}
+<html>
+<head>
+<title>APLICATIVO METRO</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/tcc.css' %}">
+<style>
+.page-header {
+    background-color: #211004;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+p {text-align: center; 
+    margin: auto;
+    padding: 10px 50px 20px;}
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #151712;
+  padding: 10px 50px 20px;
+  }  
+  .center2 {
+  margin: auto;
+  width: 60%;
+  padding: 10px 50px 20px;
+  }  
+  .center3 {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #525947;
+  padding: 10px 50px 20px;
+  }  
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+
+
+
+<body>
+    <div class="page-header">
+        <h1><p><a href="/">APLICATIVO DE RECARGA</a></p></h1>
+    </div>
+    <h3>
+    <div class="center">
+        <form method="POST">
+        {% csrf_token %}
+            <p>
+            <label for="name">Insira Nome Completo: </label>
+            <input type="text" id="name" name="name"> <input type="submit" value="Enviar">
+           </p>
+        </form>   
+    </div>    
+    </h3> 
+        <br>
+        {% if nome%}
+            <h3>
+            <div class="center2">
+            <p>
+            Bem vindo {{nome}},<br>
+                {% for conta in banco %}
+                    Seu saldo é de R${{conta.saldo}} reais e você possui {{conta.numero}} bilhetes.</div>
+                    {% if conta.numero == 0 %}
+                    <a href="{% url 'recarga' %}">
+                    <h1><p><input type="submit" value="Recarga"></p></h1>
+                    </a>
+                    {% else %}
+                    <h1><p><input type="submit" value="Usar Bilhete"></p></h1>
+                    {% endif %}
+                {% endfor %}
+        {% endif %}
+        </p>
+        </div>
+        </h3> 
+      
+
+
+</body>
+</html>
