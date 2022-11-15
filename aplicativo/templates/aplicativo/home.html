@@ -85,7 +85,13 @@ tr:nth-child(even) {
                     <h1><p><input type="submit" value="Recarga"></p></h1>
                     </a>
                     {% else %}
+                    <a href="{% url 'usar_bilhete' %}">
                     <h1><p><input type="submit" value="Usar Bilhete"></p></h1>
+                    </a>
+                    <a href="{% url 'comprar_bilhete' %}">
+                    <h1><p><input type="submit" value="Comprar Bilhete"></p></h1>
+                    </a>
+                    
                     {% endif %}
                 {% endfor %}
         {% endif %}

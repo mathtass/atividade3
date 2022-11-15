@@ -59,24 +59,23 @@ tr:nth-child(even) {
     <div class="page-header">
         <h1><p><a href="/">APLICATIVO DE RECARGA</a></p></h1>
     </div>
-    
-    <h2><p> Insira os dados e realize a recarga:</p></h2>
+    <h2><p> Insira os dados e realize a compra:</p></h2>
     <h3>
-        <div class="center">
-            <form method="POST">
-            {% csrf_token %}
-                <p>
-                <label for="name">Insira Nome Completo: </label>
-                <input type="text" id="name" name="name"> <br><br>
-                <label for="name">Insira Valor da Recarga: </label>
-                <input type="number" id="recarga" name="recarga"><br><br>
-                <input type="submit" value="Realizar Recarga">
-            </form>   
-        </div>    
-        </h3> 
-    
-            <a href="comprar_bilhete">
-            <h1><p><input type="submit" value="Comprar Bilhete"></p></h1>
-            </a>
-        
+      <div class="center">
+          <form method="POST">
+          {% csrf_token %}
+              <p>
+              <label for="name">Insira Nome Completo: </label>
+              <input type="text" id="name" name="name"> <br><br>
+              <label for="name">Insira a Quantidade de Bilhetes: </label>
+              <input type="number" id="bilhetes" name="bilhetes"><br><br>
+              <input type="submit" value="Comprar Bilhetes">
+          </form>   
+      </div>    
+      </h3> 
+      {% if compra == 'true'%}
+      <h1><p><a href="/">COMPRA REALIZADA</a></p></h1>
+      {% elif compra == 'false' %}
+      <h1><p><a href="recarga">SALDO INSUFICIENTE</a></p></h1>
+      {% endif %}
 </body>
