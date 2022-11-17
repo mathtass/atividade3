@@ -47,7 +47,16 @@ def comprar_bilhete(request):
 
 
 def usar_bilhete(request):
-    return render(request, 'aplicativo/usar_bilhete.html')
+    nome = ""
+    banco = Banco.objects.all().order_by('nome')
+    compra = 'false'
+    if request.method=='POST':
+        nome = request.POST['name']
+        banco = Banco.objects.filter(nome=nome)
+        numero_bilhetes = int(banco[0].numero) - 1
+        banco = Banco.objects.filter(nome=nome).update(numero=numero_bilhetes)
+        compra = 'true'
+    return render(request, 'aplicativo/usar_bilhete.html',{'compra': compra})
 
 def clientes(request):
     banco = Banco.objects.all().order_by('nome')

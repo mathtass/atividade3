@@ -10,7 +10,6 @@ class Banco(models.Model):
     numero = models.IntegerField("Número de Bilhetes", max_length=100,null=True)
     data_compra = models.DateTimeField(default=timezone.now,null=True)
     
-    
 
     def publish(self):
         self.data_encontro = timezone.now()

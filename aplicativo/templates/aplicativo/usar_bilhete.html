@@ -59,8 +59,24 @@ tr:nth-child(even) {
     <div class="page-header">
         <h1><p><a href="/">APLICATIVO DE RECARGA</a></p></h1>
     </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="center">
+            
+            <h1><p><label for="name">Insira Nome Completo: </label>
+            <input type="text" id="name" name="name"></p></h1> 
+            <a href="{% url 'usar_bilhete' %}">
+                <h1><p><input type="submit" value="Usar Bilhete"></p></h1>
+                </a>   
+        
+        </div>
+        <br>
+        <br>
+        {% if compra == 'true' %}
     <div class="page-header">
         <p><img src="{% static 'images/qr.png'%}"></p> 
         
       </div>
+      {% endif %}
 </body>
