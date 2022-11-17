@@ -59,8 +59,19 @@ tr:nth-child(even) {
     <div class="page-header">
         <h1><p><a href="/">APLICATIVO DE RECARGA</a></p></h1>
     </div>
-    <div class="page-header">
-        <p><img src="{% static 'images/qr.png'%}"></p> 
-        
-      </div>
+
+    <table>
+        <tr>
+         <h1> <th>NOME CLIENTES</th></h1>
+          <th>NÚMERO DE BILHETES </th>
+          <th>SALDO EM REAIS</th>
+        </tr>
+          {% for cliente in banco %}
+        <tr>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.numero}}</td>
+          <td>{{ cliente.saldo}}</td>
+        </tr>
+        {% endfor %} 
+      </table>
 </body>
